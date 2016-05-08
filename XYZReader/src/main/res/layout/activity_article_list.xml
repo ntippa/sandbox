@@ -6,11 +6,12 @@
     android:fitsSystemWindows="true">
 
     <!--ref:https://discussions.udacity.com/t/material-design-toolbar-is-expanded-by-default/158868-->
+    <!--https://discussions.udacity.com/t/my-p5-collapsingtoolbar-compresses-but-does-not-expand-when-scrolling-the-images-downward/47515-->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="168dp"
-        android:background="@color/theme_primary_dark"
+        android:background="?attr/colorPrimary"
         android:elevation="8dp">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -18,19 +19,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="exitUntilCollapsed|scroll">
-
+            app:expandedTitleMarginStart="72dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@color/theme_primary"
                 android:elevation="4dp"
+                app:contentInsetStart="72dp"
                 app:layout_collapseMode="pin"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitStart"
+                    style="@style/TextAppearance.AppCompat.Large"
+                    android:src="@drawable/logo"/>
 
             </android.support.v7.widget.Toolbar>
 
@@ -38,38 +46,39 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <!--<include layout="@layout/content_main" />-->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/list_side_margin"
-            android:paddingLeft="@dimen/list_side_margin"
-            android:paddingRight="@dimen/list_side_margin"
-            android:paddingTop="@dimen/list_side_margin"
-            android:scrollbarStyle="insideOverlay" />
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+            <!--<include layout="@layout/content_main" />-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/list_side_margin"
+                android:paddingLeft="@dimen/list_side_margin"
+                android:paddingRight="@dimen/list_side_margin"
+                android:paddingTop="@dimen/list_side_margin"
+                android:scrollbarStyle="insideOverlay" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
 
     <android.support.design.widget.FloatingActionButton
+        style="@style/fab"
+        android:id="@+id/refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/ic_share"
+        android:src="@drawable/ic_refresh_white_36dp"
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:fabSize="normal"
-        app:layout_anchor="@id/swipe_refresh_layout"
-        app:layout_anchorGravity="bottom|right|end"
+        android:layout_gravity="end|bottom"
         app:pressedTranslationZ="12dp" />
 
 </android.support.design.widget.CoordinatorLayout>

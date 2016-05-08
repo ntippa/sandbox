@@ -18,11 +18,33 @@
 <resources>
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
-
+          <item name="colorPrimary">@color/theme_primary</item>
+         <item name = "colorPrimaryDark">@color/theme_primary_dark</item>
+         <item name = "colorAccent">@color/theme_accent</item>
+         <item name = "android:textColorPrimary">@color/white</item>
+         <item name = "android:windowBackground">@color/white</item>
     </style>
 
-    <style name="Theme.Bacon.Detail">
-        <item name="android:statusBarColor">@android:color/transparent</item>
+     <style name="title" parent="@style/TextAppearance.AppCompat.Small">
+          <item name="android:textColor">@color/BlueGreyDark</item>
+          <item name="android:fontFamily">Roboto Thin</item>
+          <item name="android:textSize">@dimen/title_text_size</item>
+     </style>
+
+     <style name="subtitle" parent="@style/TextAppearance.AppCompat.Small">
+          <item name="android:textColor">@color/BlueGreyMedium</item>
+          <item name="android:textSize">@dimen/subtitle_text_size</item>
+     </style>
+
+    <style name="article_text" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/BlueGreyMedium</item>
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
     </style>
+
+    <style name="fab" parent="@style/Widget.AppCompat.ActionButton">
+        <item name="android:background">@color/theme_accent</item>
+    </style>
+
+
 
 </resources>
